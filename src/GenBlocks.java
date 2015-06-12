@@ -1,38 +1,32 @@
-import java.util.Scanner;
 
-
+/* Complete */
 public class GenBlocks {
 
-    private static final String symbol = "=";
+    private static final String symbolH = "=";
 
     public static void main(String[]args){
 
-        if(args.length != 2) {
-            System.out.println("Two args required.");
-            return;
-        }
+        assert args.length != 2: "Two args required";
+//        if(args.length != 2) {
+//            System.out.println("Two args required.");
+//            return;
+//        }
 
-        int[] matrix = new int[1];
-        Scanner in = new Scanner(System.in);
+        int[] matrix = new int[2];
         for(int i = 0; i < 2; i++) {
-            matrix[i] = in.nextInt();
+            matrix[i] = Integer.valueOf(args[i]);
         }
 
         for(int i = 1; i <= matrix[0]; i++) {
-            for(int j = 1; j <= matrix[1]; j++) {
-                System.out.println(new String(new char[4]).replace("\0", symbol));
-                if(j == matrix[1]) {
-                    System.out.println(symbol + "\n");
-                    for(int k = 1; k <= matrix[1]; k++) {
-                        System.out.println(symbol + "   ");
-                        if(k == matrix[1]) {
-                            System.out.println(symbol + "\n");
-                        }
-                    }
+            System.out.println(new String(new char[matrix[1] * 4 + 1]).replace("\0", symbolH));
+            for(int k = 1; k <= matrix[1]; k++) {
+                System.out.print(symbolH + "   ");
+                if(k == matrix[1]) {
+                    System.out.println(symbolH);
                 }
-                if(i == matrix[0]) {
-                    System.out.println(new String(new char[4]).replace("\0", symbol));
-                }
+            }
+            if(i == matrix[0]) {
+                System.out.println(new String(new char[matrix[1]*4+1]).replace("\0", symbolH));
             }
         }
     }
